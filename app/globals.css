@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+/* ---- Brand tokens (Supaporn Diamond) ---- */
+:root {
+  --cream: #fafae1;
+  --cream-deep: #f3efd9;
+  --white: #ffffff;
+  --espresso: #42210a;
+  --espresso-soft: #5c3a20;
+  --gold: #c0830b;
+  --gold-bright: #d8a52a;
+  --champagne: #cda67f;
+  --lightgold: #fdd79a;
+}
+
+@theme inline {
+  --color-cream: var(--cream);
+  --color-cream-deep: var(--cream-deep);
+  --color-white: var(--white);
+  --color-espresso: var(--espresso);
+  --color-espresso-soft: var(--espresso-soft);
+  --color-gold: var(--gold);
+  --color-gold-bright: var(--gold-bright);
+  --color-champagne: var(--champagne);
+  --color-lightgold: var(--lightgold);
+
+  --color-background: var(--cream);
+  --color-foreground: var(--espresso);
+
+  --font-display: var(--font-cormorant), var(--font-noto-serif-thai), Georgia, serif;
+  --font-body: var(--font-montserrat), var(--font-noto-sans-thai), system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background: var(--cream);
+  color: var(--espresso);
+  font-family: var(--font-body);
+}
+
+::selection {
+  background: var(--gold);
+  color: var(--cream);
+}
+
+/* Thin gold rule with perpetual shimmer */
+.gold-rule {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in oklab, var(--gold) 30%, transparent),
+    var(--gold),
+    color-mix(in oklab, var(--gold) 30%, transparent),
+    transparent
+  );
+  background-size: 200% 100%;
+  animation: shimmer 6s linear infinite;
+}
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Eyebrow / overline */
+.eyebrow {
+  font-family: var(--font-body);
+  text-transform: uppercase;
+  letter-spacing: 0.32em;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--gold);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .gold-rule { animation: none; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
